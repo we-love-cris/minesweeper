@@ -19,5 +19,6 @@ int chain(char map[ROW][COLUMN], int x, int y);
 void discover(char map[ROW][COLUMN], int x, int y);
 int kill_mine(char map[ROW][COLUMN], int x, int y, int life);
 void boom(char map[ROW][COLUMN], int x, int y);
+void reveal(char map[ROW][COLUMN], int x, int y);
 int scanner(char map[ROW][COLUMN], int life);
-int Showmenu();
+int showmenu();

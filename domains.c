@@ -5,7 +5,10 @@ int select(char map[ROW][COLUMN], int x, int y, int life)
   char temp = map[x][y];
   if (temp == UNKNOWN_MINE_SHAPE)
   {
-    boom(map, x, y);
+	  if (life == 1)
+		  boom(map, x, y);
+	  else
+		  reveal(map, x, y);
     life--;
   }
   if (temp == UNKNOWN)
@@ -61,7 +64,10 @@ int kill_mine(char map[ROW][COLUMN], int x, int y, int life)
     map[x][y] = DISCOVERED_MINE_SHAPE;
   else
   {
-    boom(map, x, y);
+	  if (life == 1)
+		  boom(map, x, y);
+	  else
+		  reveal(map, x, y);
     life--;
   }
   return life;
@@ -71,4 +77,18 @@ void boom(char map[ROW][COLUMN], int x, int y)
 {
   map[x][y] = 'Q';
   return;
+}
+
+void reveal(char map[ROW][COLUMN], int x, int y) {
+	char temp = map[x][y];
+	if (temp == UNKNOWN_MINE_SHAPE)
+		temp = DISCOVERED_MINE_SHAPE;
+	else if ('a' < temp && temp < 'j') 
+		temp = temp - 'a' + '0';
+	else if (UNKNOWN) {
+		chain(map, x, y);
+		temp = CLEAR_SHAPE;
+	}
+	map[x][y] = temp;
+	return;
 }
