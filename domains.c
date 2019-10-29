@@ -1,7 +1,7 @@
 #include "declare.h"
 
 int select(char map[ROW][COLUMN], int x, int y, int life)
-{ //만약 밝혀지지 않은 지뢰라면 0을 리턴, 나머지는 1을 리턴한다
+{ //게임 모드 중 select 모드에 해당한다. 만약 밝혀지지 않은 지뢰라면 life를 1 깎아 리턴한다.
   char temp = map[x][y];
   if (temp == UNKNOWN_MINE_SHAPE)
   {
@@ -20,7 +20,7 @@ int select(char map[ROW][COLUMN], int x, int y, int life)
 }
 
 int chain(char map[ROW][COLUMN], int x, int y)
-{ //찾기 모드에서 버튼이 눌렸을 때 알려지지 않은 빈 칸이었을 경우, 연쇄적으로 빈 칸과 숫자들을 탐색
+{ //select에서 버튼이 눌렸을 때 알려지지 않은 빈 칸이었을 경우, 연쇄적으로 빈 칸과 숫자들을 탐색
   int hor[] = {-1, -1, -1, 0, 0, 1, 1, 1};
   int ver[] = {-1, 0, 1, -1, 1, -1, 0, 1};
   int xi = 0, yi = 0;

@@ -1,7 +1,7 @@
 #include "declare.h"
 
 void create_map(char map[ROW][COLUMN])
-{ // 지도의 초기화를 담당하는 함수
+{ // 지도의 초기화를 담당하는 함수, 지도의 모든 값을 알려지지 않은 빈 칸으로 설정한다.
   for (int i = 0; i < ROW; i++)
   {
     for (int j = 0; j < COLUMN; j++)
@@ -13,7 +13,7 @@ void create_map(char map[ROW][COLUMN])
 }
 
 void mining(char map[ROW][COLUMN], int a, int b)
-{ // 지도에 지뢰를 매설하는 과정, 첫 입력으로 a, b를 받아, 그 칸을 제외하고 지뢰 생성
+{ // 지도에 지뢰를 매설하는 과정, 첫 입력으로 a, b를 받아, 그 칸을 제외하고 랜덤하게 지뢰 생성
   srand((unsigned)time(NULL));
   int x = 0, y = 0;
   for (int i = 0; i < MINE_AMOUNT; i++)
@@ -51,7 +51,7 @@ int minecheck(char map[ROW][COLUMN], int x, int y)
 }
 
 void numbering(char map[ROW][COLUMN])
-{ // 지도에 매설된 지뢰를 통해 숫자를 채워 넣는 과정
+{ // 지도에 매설된 지뢰를 통해 숫자를 채워 넣는 과정, minecheck를 통해 주변의 지뢰의 수를 세고, 해당하는 칸에 주변의 지뢰의 수를 저장한다.
   int temp = 0;
   for (int i = 0; i < ROW; i++)
   {
