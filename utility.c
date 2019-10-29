@@ -93,33 +93,30 @@ int scanner(char map[ROW][COLUMN], int life)
   return result;
 }
 
-int Showmenu()
-{ //난이도 설정 메뉴
-  int difficulty = 0;
+int showmenu() { //난이도 설정 메뉴
+	int difficulty = 0;
 
-  while (1)
-  {
-    printf("난이도를 선택하세요(easy(1), normal(2), crazy(3), 설명서(0)): ");
-    scanf("%d", &difficulty);
+	while (1) {
+		printf("난이도를 선택하세요(easy(1), normal(2), crazy(3), 설명서(0)): ");
+		scanf("%c", &difficulty); getchar();
 
-    switch (difficulty)
-    {
-    case 1:
-      return 10;
-      break;
-    case 2:
-      return 5;
-      break;
-    case 3:
-      return 1;
-      break;
-    case 0:
-      printf("select mode: 탐색(지뢰 선택 시 LIFE 감소)\n");
-      printf("kill mode: 지뢰제거(지뢰 외 제거 시 LIFE 감소)\n");
-      break;
-    default:
-      printf("난이도를 올바르게 입력하세요\n");
-      break;
-    }
-  }
+		switch (difficulty) {
+		case '1':
+			return 10;
+			break;
+		case '2':
+			return 5;
+			break;
+		case '3':
+			return 1;
+			break;
+		case '0':
+			printf("select mode: 탐색(지뢰 선택 시 LIFE 감소)\n");
+			printf("kill mode: 지뢰제거(지뢰 외 제거 시 LIFE 감소)\n");
+			break;
+		default:
+			printf("난이도를 올바르게 입력하세요\n");
+			break;
+		}
+	}
 }
