@@ -15,36 +15,39 @@ void print(char map[ROW][COLUMN])
   return;
 }
 
-void show(char map[ROW][COLUMN])
-{ // 현재 지도를 보고, 플레이어의 상황에 맞게 출력해주는 함수, 지도의 값을 읽어 'ㅁ'을 한자로 바꾼 모양 중 적절한 모양을 프린트한다.
-  for (int i = 0; i < ROW; i++)
-  {
-    for (int j = 0; j < COLUMN; j++)
-    {
-      char temp = map[i][j];
-      if (temp == UNKNOWN_MINE_SHAPE || temp == UNKNOWN || ('a' < temp && temp < 'j'))
-      {
-        printf("■"); //탐사 안한 부분
-      }
-      else if (temp == CLEAR_SHAPE)
-      {
-        printf("□"); //탐사를 했으나 멀쩡한 부분
-      }
-      else if (temp == 'Q')
-      {
-        printf("＠"); //지뢰 (kill모드에선 지뢰가 아닌 부분을 kill한 경우)
-      }
-      else if ('0' < temp && temp < '9')
-      {
-        printf(" %c", temp); //근처 지뢰개수
-      }
-      else if (temp == DISCOVERED_MINE_SHAPE)
-      {
-        printf("＊"); //지뢰 제거(발견) 완료
-      }
-    }
-    printf("\n");
-  }
+void show(char map[ROW][COLUMN]) {// 현재 지도를 보고, 플레이어의 상황에 맞게 출력해주는 함수, 지도의 값을 읽어 'ㅁ'을 한자로 바꾼 모양 중 적절한 모양을 프린트한다.
+	system("cls");
+	printf("  ");
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+	for (int i = 0; i < COLUMN; i++) {
+		printf("%2d", i + 1);
+	}
+	printf("\n");
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	for (int i = 0; i < ROW; i++) {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+		printf("%2d", i + 1);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+		for (int j = 0; j < COLUMN; j++) {
+			char temp = map[i][j];
+			if (temp == UNKNOWN_MINE_SHAPE || temp == UNKNOWN || ('a' < temp && temp < 'j')) {
+				printf("■");
+			}
+			else if (temp == CLEAR_SHAPE) {
+				printf("□");
+			}
+			else if (temp == 'Q') {
+				printf("＠");
+			}
+			else if ('0' < temp && temp < '9') {
+				printf(" %c", temp);
+			}
+			else if (temp == DISCOVERED_MINE_SHAPE) {
+				printf("＊");
+			}
+		}
+		printf("\n");
+	}
 }
 
 int scanner(char map[ROW][COLUMN], int life) {
