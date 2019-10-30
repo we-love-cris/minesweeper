@@ -72,10 +72,10 @@ int scanner(char map[ROW][COLUMN], int life) {
 	inputx -= 1;
 	inputy -= 1;
 	if (mode) {
-		life = kill_mine(map, inputx, inputy);
+		life = kill_mine(map, inputx, inputy, life);
 	}
 	else {
-		life = select_(map, inputx, inputy);
+		life = select_(map, inputx, inputy, life);
 	}
 	return life;
 }
