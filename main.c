@@ -15,18 +15,21 @@ int main(void)
   char map[ROW][COLUMN];
   int startx = 0, starty = 0;
   int life = showmenu();
-  char initialinput[5];
 
   printf("지뢰찾기를 시작합니다.\n");
   printf("현재 LIFE: %d\n", life);
-  printf("시작할 행을 입력하세요 (최대 %d) : ", ROW);
-  scanf("%d", &startx);
-  printf("시작할 열을 입력하세요 (최대 %d) : ", COLUMN);
-  scanf("%d", &starty);
+  while (!startx) {
+	  printf("시작할 행을 입력하세요 (최대 %d) : ", ROW);
+	  startx = scan_int(1);
+  }
+  while (!starty) {
+	  printf("시작할 열을 입력하세요 (최대 %d) : ", COLUMN);
+	  starty = scan_int(0);
+  }
   create_map(map);
   mining(map, startx - 1, starty - 1);
   numbering(map);
-  select(map, startx - 1, starty - 1, life);
+  select_(map, startx - 1, starty - 1, life);
   show(map);
   while (life)
   {

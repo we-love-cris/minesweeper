@@ -47,52 +47,6 @@ void show(char map[ROW][COLUMN])
   }
 }
 
-/*int scanner(char map[ROW][COLUMN], int life)
-{ //모드 선택 및 행,열 결정.
-  int inputx = 0, inputy = 0;
-  int result;
-  char input[5];
-  if (mode)
-  {
-    printf("현재 모드 : kill_mine (모드 변경은 0을 입력하세요) \n");
-  }
-  else
-  {
-    printf("현재 모드 : select (모드변경은 0을 입력하세요) \n");
-  }
-  printf("선택할 행 (최대 : %d) : ", ROW);
-  scanf("%d", &inputx);
-  if (inputx == 0)
-  {
-    if (mode)
-      mode = 0;
-    else
-      mode = 1;
-    return life;
-  }
-  printf("선택할 열 (최대 : %d) : ", COLUMN);
-  scanf("%d", &inputy);
-  if (inputy == 0)
-  {
-    if (mode)
-      mode = 0;
-    else
-      mode = 1;
-    return life;
-  }
-  inputx -= 1;
-  inputy -= 1;
-  if (mode)
-  {
-    result = kill_mine(map, inputx, inputy, life);
-  }
-  else
-  {
-    result = select(map, inputx, inputy, life);
-  }
-  return result;
-}*/
-
 int scanner(char map[ROW][COLUMN], int life) {
 	int inputx = 0, inputy = 0;
 	if (mode) { printf("\n현재 모드 : kill_mine (모드 변경은 0을 입력하세요) \n"); }
