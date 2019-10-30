@@ -80,24 +80,66 @@ int scanner(char map[ROW][COLUMN], int life) {
 	return life;
 }
 
-int showmenu() { //난이도 설정 메뉴
-	int difficulty = 0;
 
+int calc(int m) {
+	if (m == 0) return 1;
+	return 10 * calc(m - 1);
+}
+
+int 거듭제곱(char str[], int k) {
+	int sum = 0;
+	for (int i = 0; i <= k; i++) {
+		if (i == k) {
+			sum += str[k] - 48;
+		}
+		else sum += (str[i] - 48) * calc(k - i);
+	}
+	return sum;
+}
+
+int showmenu() { //난이도 설정 메뉴
 	while (1) {
+		int sum = 0; int i = 0;
+		int difficulty = 100;
+		char c;
+		int k = 0;
+
+		char str[MINE_AMOUNT] = "";
 		printf("난이도를 선택하세요(easy(1), normal(2), crazy(3), 설명서(0)): ");
-		scanf("%c", &difficulty); getchar();
+		while (1) {
+			if (i > MINE_AMOUNT - 1) break;
+			scanf("%c", &c);
+			if (c == '\n') break;
+			else str[i] = c;
+			i++;
+		}
+
+		for (k = 0; k < i; k++) {
+			if (str[k] >= '0' && str[k] <= '9') {
+				sum = 거듭제곱(str, k);
+			}
+			if (str[k] < '0' || str[k] > '9') {
+				printf("잘못된 입력입니다. \n");
+				break;
+			}
+			if (str[k] < '0' || str[k] > '9') {
+				break;
+			}
+		}
+
+		difficulty = sum;
 
 		switch (difficulty) {
-		case '1':
+		case 1:
 			return 10;
 			break;
-		case '2':
+		case 2:
 			return 5;
 			break;
-		case '3':
+		case 3:
 			return 1;
 			break;
-		case '0':
+		case 0:
 			printf("select mode: 탐색(지뢰 선택 시 LIFE 감소)\n");
 			printf("kill mode: 지뢰제거(지뢰 외 제거 시 LIFE 감소)\n");
 			break;
