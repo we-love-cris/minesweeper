@@ -23,7 +23,7 @@ void boom(char map[ROW][COLUMN], int x, int y);
 void reveal(char map[ROW][COLUMN], int x, int y);
 int scanner(char map[ROW][COLUMN], int life);
 int scan_int(int rowcol);
-int win(char map[ROW][COLUMN]);
+void win(char map[ROW][COLUMN]);
 int calc(int m);
 int 거듭제곱(char str[], int k);
 int showmenu();
