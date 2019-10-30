@@ -47,7 +47,7 @@ void show(char map[ROW][COLUMN])
   }
 }
 
-int scanner(char map[ROW][COLUMN], int life)
+/*int scanner(char map[ROW][COLUMN], int life)
 { //모드 선택 및 행,열 결정.
   int inputx = 0, inputy = 0;
   int result;
@@ -91,6 +91,39 @@ int scanner(char map[ROW][COLUMN], int life)
     result = select(map, inputx, inputy, life);
   }
   return result;
+}*/
+
+int scanner(char map[ROW][COLUMN], int life) {
+	int inputx = 0, inputy = 0;
+	if (mode) { printf("\n현재 모드 : kill_mine (모드 변경은 0을 입력하세요) \n"); }
+	else { printf("\n현재 모드 : select (모드변경은 0을 입력하세요) \n"); }
+	while (!inputx) {
+		printf("선택할 행 (최대 : %d) : ", ROW);
+		inputx = scan_int(1);
+	}
+	if (inputx == 0) {
+		if (mode) mode = 0;
+		else mode = 1;
+		return life;
+	}
+	while (!inputy) {
+		printf("선택할 열 (최대 : %d) : ", COLUMN);
+		inputy = scan_int(0);
+	}
+	if (inputy == 0) {
+		if (mode) mode = 0;
+		else mode = 1;
+		return life;
+	}
+	inputx -= 1;
+	inputy -= 1;
+	if (mode) {
+		life = kill_mine(map, inputx, inputy);
+	}
+	else {
+		life = select_(map, inputx, inputy);
+	}
+	return life;
 }
 
 int showmenu() { //난이도 설정 메뉴
@@ -117,6 +150,47 @@ int showmenu() { //난이도 설정 메뉴
 		default:
 			printf("난이도를 올바르게 입력하세요\n");
 			break;
+		}
+	}
+}
+
+int scan_int(int rowcol) {//row선택인지 column선택인지에 따라 숫자를 받는 함수 row의 경우 1, column인 경우 0이 입력된다
+	char input[100] = { "0" };
+	char temp = '\0';
+	int result = 0;
+
+	for (int i = 0; i < 99; i++) {
+		scanf("%c", &temp);
+		input[i] = temp;
+		if (temp == '\n')
+			break;
+	}
+	for (int i = 0; i < 99; i++) {
+		temp = input[i];
+		if (temp == '\n') break;
+		if ('0' <= temp && temp <= '9') {
+			result *= 10;
+			result += temp - '0';
+		}
+		else {
+			printf("올바른 값을 입력해 주세요\n");
+			return 0;
+		}
+	}
+	if (rowcol) {// row에 해당하는 입력을 받을 경우
+		if (result <= ROW)
+			return result;
+		else {
+			printf("올바른 값을 입력해 주세요\n");
+			return 0;
+		}
+	}
+	else { // Column에 대한 입력을 받을 경우
+		if (result <= COLUMN)
+			return result;
+		else {
+			printf("올바른 값을 입력해 주세요\n");
+			return 0;
 		}
 	}
 }

@@ -1,6 +1,6 @@
 #include "declare.h"
 
-int select(char map[ROW][COLUMN], int x, int y, int life)
+int select_(char map[ROW][COLUMN], int x, int y, int life)
 { //게임 모드 중 select 모드에 해당한다. 만약 밝혀지지 않은 지뢰라면 life를 1 깎아 리턴한다.
   char temp = map[x][y];
   if (temp == UNKNOWN_MINE_SHAPE)
@@ -90,5 +90,11 @@ void reveal(char map[ROW][COLUMN], int x, int y) {
 		temp = CLEAR_SHAPE;
 	}
 	map[x][y] = temp;
+	return;
+}
+
+void win(char map[ROW][COLUMN]) {
+	show(map);
+	printf("축하합니다! 승리하셨습니다!\n");
 	return;
 }

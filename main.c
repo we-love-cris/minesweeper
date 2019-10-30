@@ -14,7 +14,7 @@ int main(void)
 
   char map[ROW][COLUMN];
   int startx = 0, starty = 0;
-  int life = Showmenu();
+  int life = showmenu();
   char initialinput[5];
 
   printf("지뢰찾기를 시작합니다.\n");
