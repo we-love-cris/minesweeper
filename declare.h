@@ -20,7 +20,7 @@ void discover(char map[ROW][COLUMN], int x, int y);
 int kill_mine(char map[ROW][COLUMN], int x, int y, int life);
 void boom(char map[ROW][COLUMN], int x, int y);
 void reveal(char map[ROW][COLUMN], int x, int y);
-int scanner_(char map[ROW][COLUMN], int life);
+int scanner(char map[ROW][COLUMN], int life);
 int scan_int(int rowcol);
 int win(char map[ROW][COLUMN]);
 int showmenu();
