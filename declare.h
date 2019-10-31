@@ -4,7 +4,7 @@
 #include <time.h>
 
 // 선언된 상수값들
-#include "constants.h"
+#include "./constants.h"
 
 // 선언된 함수 프로토타입
 
