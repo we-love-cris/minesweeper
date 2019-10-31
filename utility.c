@@ -16,18 +16,13 @@ void print(char map[ROW][COLUMN])
 }
 
 void show(char map[ROW][COLUMN]) {// 현재 지도를 보고, 플레이어의 상황에 맞게 출력해주는 함수, 지도의 값을 읽어 'ㅁ'을 한자로 바꾼 모양 중 적절한 모양을 프린트한다.
-	system("cls");
 	printf("  ");
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
 	for (int i = 0; i < COLUMN; i++) {
 		printf("%2d", i + 1);
 	}
 	printf("\n");
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 	for (int i = 0; i < ROW; i++) {
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
 		printf("%2d", i + 1);
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 		for (int j = 0; j < COLUMN; j++) {
 			char temp = map[i][j];
 			if (temp == UNKNOWN_MINE_SHAPE || temp == UNKNOWN || ('a' < temp && temp < 'j')) {
