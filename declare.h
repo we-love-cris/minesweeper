@@ -2,9 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <Windows.h>
 
 // 선언된 상수값들
-#include "./constants.h"
+#include "constants.h"
 
 // 선언된 함수 프로토타입
 
@@ -21,7 +22,7 @@ int kill_mine(char map[ROW][COLUMN], int x, int y, int life);
 void boom(char map[ROW][COLUMN], int x, int y);
 void reveal(char map[ROW][COLUMN], int x, int y);
 int scanner(char map[ROW][COLUMN], int life);
-int scan_int(int rowcol);
+int scan_int(int maximum);
 void win(char map[ROW][COLUMN]);
 int calc(int m);
 int 거듭제곱(char str[], int k);
